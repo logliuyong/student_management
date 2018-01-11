@@ -7,6 +7,7 @@ int main(void){
     int sfd,cfd;
 
     sfd=t_listen(6000,5);
+	printf("%d",1);
     while(1){
         cfd=t_accept(sfd);
 
