@@ -151,11 +151,18 @@ int modify_stu(int sfd){
 int download_stu(int sfd){
   int fd=0,num=9,ms=0;
   stu s;
+  char buf[50]={0};
+  char filename[50]={0};
   bzero(&s,sizeof(stu));
   char *msg="数据库不存在，无法执行该操作\n";
   char *msg1="数据库正在维护，请稍后再试!\n";
   char *msg2="正在下载文件，请稍后...\n";
-  FILE *p_file=fopen("student.txt","w+");
+  printf("请输入你保存在本地的路径及文件名，建议以.txt结束：");
+  scanf("%*[^\n]");
+  scanf("%*c");
+  fgets(buf,50,stdin);
+  sscanf(buf,"%[^\n]",filename);
+  FILE *p_file=fopen(filename,"w+");
   if(p_file==NULL){
     perror("fopen");
     return -1;
